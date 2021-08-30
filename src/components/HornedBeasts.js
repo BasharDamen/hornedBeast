@@ -1,14 +1,36 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
+class HornedBeasts extends React.Component {
 
-class HornedBeasts extends React.Component{
+    constructor(props) {
+        super(props)
+        this.state = {
+            favorite : 0
+        }
+    }
 
-    render(){
-        return(
+    increaseFavNum = () => {
+        this.setState({
+            favorite: this.state.favorite + 1
+        })
+    }
+
+    render() {
+        return (
             <>
-            <h2>{this.props.title}</h2>
-            <img src={this.props.ImageUrl} alt={this.props.title} title={this.props.title}/>
-            <p>{this.props.description}</p>
+                <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src={this.props.imgUrl} alt={this.props.title} title={this.props.title} onClick={this.increaseFavNum} />
+                    <Card.Body>
+                        <Card.Title>{this.props.title}</Card.Title>
+                        <Card.Text>
+                            {this.props.description}
+                        </Card.Text>
+                        <Button variant="primary">💙 : {this.state.favorite}</Button>
+                    </Card.Body>
+                </Card>
             </>
         )
     }
