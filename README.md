@@ -1,3 +1,22 @@
+Number and name of feature: 1.bootstrap library 2.map function 3.state and props 4.netlify
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 4:00 pm
+
+Finish time: 8:20 pm
+
+Actual time needed to complete: 4.5 hours
+
+
+
+
+
+
+
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
