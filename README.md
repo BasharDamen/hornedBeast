@@ -1,12 +1,12 @@
-Number and name of feature: 1.bootstrap library 2.map function 3.state and props 4.netlify
+Number and name of feature: Display a Modal
 
-Estimate of time needed to complete: 2 hours
+Estimate of time needed to complete: 1 hour
 
-Start time: 4:00 pm
+Start time: 12:40 pm
 
-Finish time: 8:20 pm
+Finish time: 3:40
 
-Actual time needed to complete: 4.5 hours
+Actual time needed to complete: 3 hours
 
 
 

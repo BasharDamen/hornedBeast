@@ -2,35 +2,41 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
 
 class HornedBeasts extends React.Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            favorite : 0
+            numbOfFav: 0
         }
     }
 
-    increaseFavNum = () => {
+    increseNumOfFav = () => {
         this.setState({
-            favorite: this.state.favorite + 1
-        })
+            numbOfFav: this.state.numbOfFav + 1
+        });
+
+        this.props.showModal(this.props.title);
     }
+
+    
 
     render() {
         return (
             <>
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={this.props.imgUrl} alt={this.props.title} title={this.props.title} onClick={this.increaseFavNum} />
-                    <Card.Body>
-                        <Card.Title>{this.props.title}</Card.Title>
-                        <Card.Text>
-                            {this.props.description}
-                        </Card.Text>
-                        <Button variant="primary">💙 : {this.state.favorite}</Button>
-                    </Card.Body>
-                </Card>
+                <Col>
+                    <Card style={{ width: '18rem' }}>
+                        <Card.Img variant="top" src={this.props.imageUrl} onClick={this.increseNumOfFav} />
+                        <Card.Body>
+                            <Card.Title>{this.props.title}</Card.Title>
+                            <Card.Text>{this.props.description}</Card.Text>
+                            <Card.Text>❤️ : {this.state.numbOfFav}</Card.Text>
+                            <Button variant="primary">Go somewhere</Button>
+                        </Card.Body>
+                    </Card>
+                </Col>
             </>
         )
     }
