@@ -1,49 +1,61 @@
-import React from 'react';
-import Header from './components/header';
-import Main from './components/Main';
-import Footer from './components/Footer';
+import React from "react";
+import Header from "./components/header";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
 import hornsData from "./components/hornsData.json";
-import SelectedBeast from './components/SelectedBeast';
-// import { element } from 'prop-types';
+import SelectedBeast from "./components/SelectedBeast";
 
 class App extends React.Component {
-
-
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      elementToShow: {},
-      show: false
-    }
+      show: false,
+      title: "",
+      imageUrl: "",
+      description: "",
+    };
   }
 
-  handleModal = (title)=>{
-    let selectedElement = hornsData.filter=(item =>{
-      if (item.title === title) {
-        return item;
-      }
-    })
-
+  handleshow = () => {
     this.setState({
-      elementToShow: selectedElement,
-      show: true
-    })
-  }
+      show: true,
+    });
+  };
 
+  handleClose = () => {
+    this.setState({
+      show: false,
+    });
+  };
+
+  updateData = (title, imageUrl, description) => {
+    this.setState({
+      title: title,
+      imageUrl: imageUrl,
+      description: description,
+    });
+  };
 
   render() {
     return (
       <>
         <Header />
-        <Main showModal={this.handleModal} />
-        <SelectedBeast show={this.state.show} handleClose={this.handleClose} elementToShow={this.state.elementToShow} />
+        <Main
+          hornsData={hornsData}
+          handleshow={this.handleshow}
+          updateData={this.updateData}
+        />
+        <SelectedBeast
+          show={this.state.show}
+          handleClose={this.handleClose}
+          title={this.state.title}
+          imageUrl={this.state.imageUrl}
+          description={this.state.description}
+        />
         <Footer />
       </>
     );
-
-  };
-
+  }
 }
-
 
 export default App;
