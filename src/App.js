@@ -4,6 +4,7 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 import hornsData from "./components/hornsData.json";
 import SelectedBeast from "./components/SelectedBeast";
+import Form from "./components/SelectForm";
 
 class App extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class App extends React.Component {
       title: "",
       imageUrl: "",
       description: "",
+      hornsData: hornsData,
     };
   }
 
@@ -36,10 +38,21 @@ class App extends React.Component {
     });
   };
 
+  filteredData = () => {
+    this.setState({
+      hornsData: (this.state.hornsData.filter = (item) => {
+        if (item.horns === 1) {
+          return item;
+        }
+      }),
+    });
+  };
+
   render() {
     return (
       <>
         <Header />
+        <Form />
         <Main
           hornsData={hornsData}
           handleshow={this.handleshow}
