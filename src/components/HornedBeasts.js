@@ -18,9 +18,12 @@ class HornedBeasts extends React.Component {
             numbOfFav: this.state.numbOfFav + 1
         });
 
-        this.props.showModal(this.props.title);
+        this.viewCard()
     }
-
+    
+    viewCard = () => {
+        this.props.showCard(this.props.title);
+    }
     
 
     render() {

@@ -3,6 +3,7 @@ import React from 'react';
 import HornedBeasts from './HornedBeasts';
 import hornsData from './hornsData.json';
 import Row from 'react-bootstrap/Row';
+import { element } from 'prop-types';
 
 // import './Main.css'
 
@@ -20,7 +21,7 @@ class Main extends React.Component {
                                     title={item.title}
                                     imageUrl={item.image_url}
                                     description={item.description}
-                                    showModal={this.props.showModal}
+                                    showCard={this.props.showModal}
                                 />
                             )
                         })

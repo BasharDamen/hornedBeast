@@ -4,49 +4,39 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import hornsData from "./components/hornsData.json";
 import SelectedBeast from './components/SelectedBeast';
+// import { element } from 'prop-types';
 
 class App extends React.Component {
 
-  constructor(props) {
+
+  constructor(props){
     super(props);
     this.state = {
-
-      beastItem: {},
+      elementToShow: {},
       show: false
-    };
+    }
   }
 
-
-  showModal = (title) => {
-    let elements = hornsData.find(element => {
-
-      if (element.title === title) {
-        return element;
+  handleModal = (title)=>{
+    let selectedElement = hornsData.filter=(item =>{
+      if (item.title === title) {
+        return item;
       }
-    });
-
-
-    this.setState({
-      show: true,
-      beastItem: elements
     })
-  };
 
-  // =============================================================
-
-  handleClose = () => {
     this.setState({
-      beastItem: {},
-      show: false,
-    });
-  };
+      elementToShow: selectedElement,
+      show: true
+    })
+  }
+
 
   render() {
     return (
       <>
         <Header />
-        <Main showModal={this.showModal} />
-        <SelectedBeast show={this.state.show} handleClose={this.handleClose} beastItem={this.state.beastItem} />
+        <Main showModal={this.handleModal} />
+        <SelectedBeast show={this.state.show} handleClose={this.handleClose} elementToShow={this.state.elementToShow} />
         <Footer />
       </>
     );
