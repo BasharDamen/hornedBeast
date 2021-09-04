@@ -21,7 +21,8 @@ class HornedBeasts extends React.Component {
     this.props.updateData(
       this.props.title,
       this.props.imageUrl,
-      this.props.description
+      this.props.description,
+      this.props.horns
     );
   };
 
@@ -36,7 +37,7 @@ class HornedBeasts extends React.Component {
               onClick={this.increseNumOfFav}
             />
             <Card.Body>
-              <Card.Title>{this.props.title}</Card.Title>
+              <Card.Title >{this.props.title}</Card.Title>
               <Card.Text>{this.props.description}</Card.Text>
               <Card.Text>❤️ : {this.state.numbOfFav}</Card.Text>
               <Button variant="primary">Go somewhere</Button>
