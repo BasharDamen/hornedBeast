@@ -4,7 +4,8 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 import hornsData from "./components/hornsData.json";
 import SelectedBeast from "./components/SelectedBeast";
-import Form from "./components/SelectForm";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Form from "react-bootstrap/Form";
 
 class App extends React.Component {
   constructor(props) {
@@ -38,23 +39,43 @@ class App extends React.Component {
     });
   };
 
-  filteredData = () => {
+  handleSelect = (event) => {
+    let filteredData;
+
+    if (event.target.value === "all") {
+      filteredData = hornsData;
+    } else {
+      filteredData = hornsData.filter((item) => {
+        return item.horns === parseInt(event.target.value);
+      });
+    }
+
     this.setState({
-      hornsData: (this.state.hornsData.filter = (item) => {
-        if (item.horns === 1) {
-          return item;
-        }
-      }),
+      hornsData: filteredData,
     });
   };
-
   render() {
     return (
       <>
         <Header />
-        <Form />
+        <Form>
+          <Form.Group>
+            <Form.Select
+              onChange={this.handleSelect}
+              aria-label="Default select example"
+              controlId="horns"
+              placeholder="Select"
+            >
+              <option value="all">all</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="100">100</option>
+            </Form.Select>
+          </Form.Group>
+        </Form>
         <Main
-          hornsData={hornsData}
+          hornsData={this.state.hornsData}
           handleshow={this.handleshow}
           updateData={this.updateData}
         />
